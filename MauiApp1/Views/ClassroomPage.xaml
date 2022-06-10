@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ClassroomPage"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+             Title="ClassroomPage">
+    <StackLayout  BackgroundColor="Blue">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="30">
+            <Label Text="RoomNumber:  "
+                BackgroundColor="Transparent"
+                FontSize="Large"
+                TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center" />
+
+            <Label Text="{Binding RoomNumber}"
+               BackgroundColor="Transparent"
+               FontSize="Large"
+               TextColor="White"
+               VerticalOptions="Start" 
+               HorizontalOptions="Center"/>
+
+        </StackLayout>
+        <Label Text="Teacher:  "
+               BackgroundColor="Transparent"
+               FontSize="Large"
+               TextColor="White"
+               VerticalOptions="Start" 
+               HorizontalOptions="Start" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="100">
+            <Image WidthRequest="100" Source="{Binding Teacher.Thumbnail}" Aspect="AspectFit"/>
+            <Label Text="{Binding Teacher.FirstName}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="White"
+                Margin="0,0,5,0"/>
+            <Label Text="{Binding Teacher.LastName}"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                TextColor="White"/>
+            <Button x:Name="btnAssignTeacher" WidthRequest="100" HeightRequest="40" Text="Change" BackgroundColor="CadetBlue" TextColor="White" Margin="10,0,0,0" Clicked="btnAssignTeacher_Clicked"/>
+        </StackLayout>
+        <Label Text="Students:  "
+               BackgroundColor="Transparent"
+               FontSize="Large"
+               VerticalOptions="Start" 
+               HorizontalOptions="Start"
+               TextColor="White"/>
+        <CollectionView x:Name="collStudents" 
+                        BackgroundColor="CadetBlue" 
+                        SelectionMode="Single"   
+                        IsVisible="true"
+                        VerticalOptions="StartAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" HeightRequest="80">
+                            <Image WidthRequest="50" Source="{Binding Thumbnail}" Aspect="AspectFit"/>
+                            <Label Text="{Binding FirstName}"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center"
+                                Margin="0,0,5,0"/>
+                            <Label Text="{Binding LastName}"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center" />
+                        </StackLayout>
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Blue"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label Text="Courses:  "
+              BackgroundColor="Transparent"
+              FontSize="Large"
+              TextColor="White"         
+              VerticalOptions="Start" 
+              HorizontalOptions="Start" />
+        <CollectionView x:Name="collCourses" 
+                        BackgroundColor="CadetBlue" 
+                        SelectionMode="Single"   
+                        IsVisible="true"
+                        VerticalOptions="StartAndExpand">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" HeightRequest="20">
+                            <Label Text="{Binding Name}"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    Margin="0,0,5,0"/>
+                            <Label Text="{Binding Grade}"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center" />
+                            <Label Text="{Binding Subject}"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HeightRequest="20">
+                            <Label Text="{Binding StartTime}"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center"
+                                    Margin="0,0,5,0"/>
+                            <Label Text="{Binding Duration}"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center" />
+                        </StackLayout>
+                        <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Blue"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
